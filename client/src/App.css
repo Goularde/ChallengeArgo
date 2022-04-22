@@ -1,7 +1,8 @@
-/* .App {
-  text-align: center;
-  margin: 0 auto;
-} */
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+} 
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
@@ -11,7 +12,7 @@ body {
 }
 
 main {
-  max-width: 960px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -47,31 +48,42 @@ label {
   padding: 0.25em 0;
 }
 
-footer {
-  margin-top: 2em;
+.member-list {  
   text-align: center;
+  column-count: 3;
+  column-width: 32vh;
+}
+
+footer {
+  margin-top: auto;
   color: #fff;
   background: #f76c6c;
-  padding: 0.25em 0;
+  text-align: center;
 }
 
 button {
   background-color: #f76c6c;
   border: none;
-  padding: 10px;
+  padding: 1vh;
   margin: 20px;
 }
 
 button:hover {
   background-color: #ac4e4e;
   border: none;
-  padding: 10px;
-  margin: 20px;
 }
-
 
 input{
   border: #ccc;
   background-color: #eee;
-  padding: 10px;
+  padding: 1vh;
+}
+
+ul{
+  padding: 0;
+  margin: 0;
+}
+ul li {
+  list-style: none;
+  
 }

@@ -12,17 +12,18 @@ function App() {
     });
   }, []);
 
-  const submitNomArgonaute = () => {
-    Axios.post("http://localhost:3001/api/insert", {
-      nomArgonaute: nomArgonaute,
-    })
-      .then(() => {
-        alert("Ajout effectué");
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .finally(() => console.log("end request"));
+  const submitNomArgonaute = (e) => {
+    e.preventDefault();
+    setNomArgonaute(() => "");
+    if (nomArgonaute !== "" && nomArgonaute !== null) {
+      Axios.post("http://localhost:3001/api/insert", {
+        nomArgonaute: nomArgonaute,
+      });
+    } else {
+      alert("Veuillez entrer un nom");
+    }
+
+    setNomArgonauteList([...nomArgonauteList, { nomArgonaute: nomArgonaute }]);
   };
 
   {
@@ -47,6 +48,7 @@ function App() {
               name="name"
               type="text"
               placeholder="Charalampos"
+              value={nomArgonaute}
               onChange={
                 //handleChange
                 (e) => {
@@ -58,10 +60,14 @@ function App() {
           </form>
 
           <h2>Membres de l'équipage</h2>
-          <section className="member-list">
-            {nomArgonauteList.map((val) => {
-              return <p key={val.idArgonaute}>{val.nomArgonaute}</p>;
-            })}
+          <section>
+            <div className="member-list">
+              <ul>
+                {nomArgonauteList.map((val) => {
+                  return <li key={val.idArgonaute}>{val.nomArgonaute}</li>;
+                })}
+              </ul>
+            </div>
           </section>
         </main>
 
